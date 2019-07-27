@@ -26,6 +26,7 @@ include /usr/share/nginx/modules/*.conf;
 events {
 	worker_connections 1024;
 }
+
 map $http_user_agent $limit_bots {
      default 0;
      ~*(google|bing|yandex|msnbot) 1;
@@ -42,6 +43,7 @@ location / {
               return 403;
             }
 }
+
 http {
 	# Cloudflare https://www.cloudflare.com/ips
 	set_real_ip_from   103.21.244.0/22;
